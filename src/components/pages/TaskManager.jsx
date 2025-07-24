@@ -1,21 +1,30 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { AuthContext } from "../../App";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 import TaskInput from "@/components/molecules/TaskInput";
 import TaskList from "@/components/organisms/TaskList";
-import ApperIcon from "@/components/ApperIcon";
 import taskService from "@/services/api/taskService";
-import { toast } from "react-toastify";
 
 const TaskManager = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const inputRef = useRef(null);
 
+const { logout } = useContext(AuthContext);
+
   const handleAddTask = async (taskData) => {
     try {
       await taskService.create({
-        ...taskData,
+        Name: taskData.text || taskData.Name || '',
+        text: taskData.text || '',
         completed: false,
-        createdAt: new Date().toISOString()
+        priority: taskData.priority || 'normal',
+        due_date: taskData.dueDate || null,
+        created_at: new Date().toISOString(),
+        Tags: taskData.tags || '',
+        Owner: null
       });
       
       setRefreshTrigger(prev => prev + 1);
@@ -23,6 +32,16 @@ const TaskManager = () => {
     } catch (err) {
       toast.error("Failed to add task. Please try again.");
       console.error("Error adding task:", err);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success("Logged out successfully");
+    } catch (error) {
+      toast.error("Logout failed");
+      console.error("Logout error:", error);
     }
   };
 
