@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "text": "Review quarterly performance reports",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-01-15",
+    "createdAt": "2024-01-10T09:00:00.000Z"
+  },
+  {
+    "Id": 2,
+    "text": "Schedule team meeting for project kickoff",
+    "completed": true,
+    "priority": "normal",
+    "dueDate": null,
+    "createdAt": "2024-01-10T10:30:00.000Z"
+  },
+  {
+    "Id": 3,
+    "text": "Update client presentation slides",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-01-12",
+    "createdAt": "2024-01-10T14:15:00.000Z"
+  },
+  {
+    "Id": 4,
+    "text": "Organize desk and file documents",
+    "completed": false,
+    "priority": "low",
+    "dueDate": null,
+    "createdAt": "2024-01-09T16:45:00.000Z"
+  },
+  {
+    "Id": 5,
+    "text": "Call supplier about delivery schedule",
+    "completed": false,
+    "priority": "normal",
+    "dueDate": "2024-01-11",
+    "createdAt": "2024-01-10T11:20:00.000Z"
+  }
+]
